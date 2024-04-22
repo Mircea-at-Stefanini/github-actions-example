@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SomeClassLibrary
 {
+    //Some class, which will be subject to unit testing
     public class Calculate
     {
         public Calculate() { }
