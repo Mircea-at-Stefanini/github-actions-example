@@ -25,10 +25,11 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     # ========= Upload the artifacts ============
+    - run: mkdir -p somepath
     - uses: actions/upload-artifact@v4
       with:
         name: Build
-        path: dist
+        path: somepath
     # ===========================================
     - name: Test
       run: dotnet test --logger "trx;LogFileName=test-results.trx" || true
