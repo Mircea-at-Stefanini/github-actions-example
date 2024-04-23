@@ -26,17 +26,7 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --logger "trx;LogFileName=test-results.trx" || true
-
-  upload:
-    name: Publish build artifacts
-    needs: build
-    runs-on: windows-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Get build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: artifacts
-          path: _artifacts
-          
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Build
+        path: dist
