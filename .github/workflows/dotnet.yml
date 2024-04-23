@@ -28,6 +28,21 @@ jobs:
       #run: dotnet test --logger "trx;LogFileName=test-results.trx" || true
       run: dotnet test --logger trx --results-directory "TestResults"
 
+    # ========== Test coverage report =========
+    - name: Code Coverage Report
+      uses: irongut/CodeCoverageSummary@v1.3.0
+      with:
+        filename: coverage/**/coverage.cobertura.xml
+        badge: true
+        fail_below_min: true
+        format: markdown
+        hide_branch_rate: false
+        hide_complexity: true
+        indicators: true
+        output: both
+        thresholds: '60 80'
+    # ===========================================
+
     # ========= Upload the artifacts ============
     - name: Upload dotnet test results
       uses: actions/upload-artifact@v4
@@ -35,4 +50,3 @@ jobs:
         name: dotnet-test-results
         path: TestResults
     # ===========================================
-
