@@ -24,9 +24,11 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --logger "trx;LogFileName=test-results.trx" || true
+    # ========= Upload the artifacts ============
     - uses: actions/upload-artifact@v3
       with:
         name: Build
         path: dist
+    # ===========================================
+    - name: Test
+      run: dotnet test --logger "trx;LogFileName=test-results.trx" || true
