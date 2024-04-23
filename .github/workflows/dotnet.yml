@@ -26,9 +26,9 @@ jobs:
       run: dotnet build --no-restore
     # ========= Upload the artifacts ============
     - run: mkdir -p somepath
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@master
       with:
-        name: Build
+        name: my-artifact
         path: somepath
     # ===========================================
     - name: Test
